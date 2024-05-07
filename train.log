@@ -1,0 +1,236 @@
+[2024-05-07 23:06:31,923 INFO]  * src vocab size = 48
+[2024-05-07 23:06:31,923 INFO]  * tgt vocab size = 35
+[2024-05-07 23:06:31,924 INFO] Building model...
+/home/bitmap4/.local/lib/python3.10/site-packages/torch/nn/modules/rnn.py:83: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.3 and num_layers=1
+  warnings.warn("dropout option adds dropout after all but last "
+[2024-05-07 23:06:31,939 INFO] NMTModel(
+  (encoder): RNNEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(48, 128, padding_idx=1)
+        )
+      )
+    )
+    (rnn): LSTM(128, 128, dropout=0.3)
+  )
+  (decoder): InputFeedRNNDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(35, 128, padding_idx=1)
+        )
+      )
+    )
+    (dropout): Dropout(p=0.3, inplace=False)
+    (rnn): StackedLSTM(
+      (dropout): Dropout(p=0.3, inplace=False)
+      (layers): ModuleList(
+        (0): LSTMCell(256, 128)
+      )
+    )
+    (attn): GlobalAttention(
+      (linear_in): Linear(in_features=128, out_features=128, bias=False)
+      (linear_out): Linear(in_features=256, out_features=128, bias=False)
+    )
+  )
+  (generator): Sequential(
+    (0): Linear(in_features=128, out_features=35, bias=True)
+    (1): Cast()
+    (2): LogSoftmax(dim=-1)
+  )
+)
+[2024-05-07 23:06:31,939 INFO] encoder: 138240
+[2024-05-07 23:06:31,940 INFO] decoder: 255779
+[2024-05-07 23:06:31,940 INFO] * number of parameters: 394019
+[2024-05-07 23:06:32,685 INFO] Starting training on CPU, could be very slow
+[2024-05-07 23:06:32,686 INFO] Start training loop and validate every 200 steps...
+[2024-05-07 23:06:32,686 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:32,699 INFO] number of examples: 900
+[2024-05-07 23:06:33,665 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:33,678 INFO] number of examples: 900
+[2024-05-07 23:06:34,830 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:34,843 INFO] number of examples: 900
+[2024-05-07 23:06:35,804 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:35,818 INFO] number of examples: 900
+[2024-05-07 23:06:36,100 INFO] Step 50/100000; acc:  14.16; ppl: 24.15; xent: 3.18; lr: 1.00000; 12984/10149 tok/s;      3 sec
+[2024-05-07 23:06:36,788 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:36,862 INFO] number of examples: 900
+[2024-05-07 23:06:37,945 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:37,959 INFO] number of examples: 900
+[2024-05-07 23:06:38,884 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:38,900 INFO] number of examples: 900
+[2024-05-07 23:06:39,670 INFO] Step 100/100000; acc:  28.01; ppl: 11.86; xent: 2.47; lr: 1.00000; 12686/9886 tok/s;      7 sec
+[2024-05-07 23:06:39,987 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:40,001 INFO] number of examples: 900
+[2024-05-07 23:06:41,019 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:41,035 INFO] number of examples: 900
+[2024-05-07 23:06:42,944 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:42,964 INFO] number of examples: 900
+[2024-05-07 23:06:44,276 INFO] Step 150/100000; acc:  37.69; ppl:  7.85; xent: 2.06; lr: 1.00000; 9733/7569 tok/s;     12 sec
+[2024-05-07 23:06:44,276 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:44,293 INFO] number of examples: 900
+[2024-05-07 23:06:45,227 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:45,237 INFO] number of examples: 900
+[2024-05-07 23:06:46,137 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:46,150 INFO] number of examples: 900
+[2024-05-07 23:06:46,994 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:47,004 INFO] number of examples: 900
+[2024-05-07 23:06:47,261 INFO] Step 200/100000; acc:  43.88; ppl:  6.35; xent: 1.85; lr: 1.00000; 14853/11609 tok/s;     15 sec
+[2024-05-07 23:06:47,261 INFO] Loading dataset from run/data.valid.0.pt
+[2024-05-07 23:06:47,266 INFO] number of examples: 100
+[2024-05-07 23:06:47,319 INFO] Validation perplexity: 7.31577
+[2024-05-07 23:06:47,319 INFO] Validation accuracy: 44.5993
+[2024-05-07 23:06:47,319 INFO] Model is improving ppl: inf --> 7.31577.
+[2024-05-07 23:06:47,319 INFO] Model is improving acc: -inf --> 44.5993.
+[2024-05-07 23:06:47,321 INFO] Saving checkpoint run/model_step_200.pt
+[2024-05-07 23:06:47,968 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:47,983 INFO] number of examples: 900
+[2024-05-07 23:06:49,050 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:49,062 INFO] number of examples: 900
+[2024-05-07 23:06:51,022 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:51,046 INFO] number of examples: 900
+[2024-05-07 23:06:51,895 INFO] Step 250/100000; acc:  48.70; ppl:  5.28; xent: 1.66; lr: 1.00000; 9771/7614 tok/s;     19 sec
+[2024-05-07 23:06:52,264 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:52,290 INFO] number of examples: 900
+[2024-05-07 23:06:54,141 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:54,152 INFO] number of examples: 900
+[2024-05-07 23:06:55,392 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:55,408 INFO] number of examples: 900
+[2024-05-07 23:06:56,218 INFO] Step 300/100000; acc:  55.43; ppl:  4.21; xent: 1.44; lr: 1.00000; 10372/8066 tok/s;     24 sec
+[2024-05-07 23:06:56,218 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:56,286 INFO] number of examples: 900
+[2024-05-07 23:06:57,848 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:57,868 INFO] number of examples: 900
+[2024-05-07 23:06:59,088 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:06:59,111 INFO] number of examples: 900
+[2024-05-07 23:07:00,870 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:00,886 INFO] number of examples: 900
+[2024-05-07 23:07:01,365 INFO] Step 350/100000; acc:  66.47; ppl:  2.99; xent: 1.09; lr: 1.00000; 8613/6732 tok/s;     29 sec
+[2024-05-07 23:07:02,243 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:02,259 INFO] number of examples: 900
+[2024-05-07 23:07:03,174 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:03,185 INFO] number of examples: 900
+[2024-05-07 23:07:04,049 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:04,064 INFO] number of examples: 900
+[2024-05-07 23:07:04,630 INFO] Step 400/100000; acc:  80.15; ppl:  1.91; xent: 0.65; lr: 1.00000; 13871/10810 tok/s;     32 sec
+[2024-05-07 23:07:04,630 INFO] Loading dataset from run/data.valid.0.pt
+[2024-05-07 23:07:04,636 INFO] number of examples: 100
+[2024-05-07 23:07:04,687 INFO] Validation perplexity: 2.18121
+[2024-05-07 23:07:04,687 INFO] Validation accuracy: 80.2265
+[2024-05-07 23:07:04,687 INFO] Model is improving ppl: 7.31577 --> 2.18121.
+[2024-05-07 23:07:04,687 INFO] Model is improving acc: 44.5993 --> 80.2265.
+[2024-05-07 23:07:04,690 INFO] Saving checkpoint run/model_step_400.pt
+[2024-05-07 23:07:05,006 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:05,022 INFO] number of examples: 900
+[2024-05-07 23:07:05,950 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:05,964 INFO] number of examples: 900
+[2024-05-07 23:07:06,843 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:06,858 INFO] number of examples: 900
+[2024-05-07 23:07:08,093 INFO] Step 450/100000; acc:  89.02; ppl:  1.44; xent: 0.36; lr: 1.00000; 12947/10069 tok/s;     35 sec
+[2024-05-07 23:07:08,093 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:08,108 INFO] number of examples: 900
+[2024-05-07 23:07:09,599 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:09,613 INFO] number of examples: 900
+[2024-05-07 23:07:10,525 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:10,540 INFO] number of examples: 900
+[2024-05-07 23:07:11,396 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:11,408 INFO] number of examples: 900
+[2024-05-07 23:07:11,660 INFO] Step 500/100000; acc:  93.51; ppl:  1.24; xent: 0.22; lr: 1.00000; 12427/9713 tok/s;     39 sec
+[2024-05-07 23:07:12,224 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:12,236 INFO] number of examples: 900
+[2024-05-07 23:07:13,162 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:13,176 INFO] number of examples: 900
+[2024-05-07 23:07:14,036 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:14,049 INFO] number of examples: 900
+[2024-05-07 23:07:14,579 INFO] Step 550/100000; acc:  95.83; ppl:  1.15; xent: 0.14; lr: 1.00000; 15513/12089 tok/s;     42 sec
+[2024-05-07 23:07:14,858 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:14,931 INFO] number of examples: 900
+[2024-05-07 23:07:15,719 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:15,734 INFO] number of examples: 900
+[2024-05-07 23:07:16,532 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:16,546 INFO] number of examples: 900
+[2024-05-07 23:07:17,535 INFO] Step 600/100000; acc:  96.02; ppl:  1.15; xent: 0.14; lr: 1.00000; 15170/11798 tok/s;     45 sec
+[2024-05-07 23:07:17,535 INFO] Loading dataset from run/data.valid.0.pt
+[2024-05-07 23:07:17,543 INFO] number of examples: 100
+[2024-05-07 23:07:17,611 INFO] Validation perplexity: 1.31455
+[2024-05-07 23:07:17,611 INFO] Validation accuracy: 94.0767
+[2024-05-07 23:07:17,611 INFO] Model is improving ppl: 2.18121 --> 1.31455.
+[2024-05-07 23:07:17,611 INFO] Model is improving acc: 80.2265 --> 94.0767.
+[2024-05-07 23:07:17,613 INFO] Saving checkpoint run/model_step_600.pt
+[2024-05-07 23:07:17,640 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:17,653 INFO] number of examples: 900
+[2024-05-07 23:07:18,566 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:18,579 INFO] number of examples: 900
+[2024-05-07 23:07:19,515 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:19,527 INFO] number of examples: 900
+[2024-05-07 23:07:20,586 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:20,602 INFO] number of examples: 900
+[2024-05-07 23:07:21,256 INFO] Step 650/100000; acc:  98.46; ppl:  1.05; xent: 0.05; lr: 1.00000; 11912/9311 tok/s;     49 sec
+[2024-05-07 23:07:22,398 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:22,413 INFO] number of examples: 900
+[2024-05-07 23:07:23,427 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:23,442 INFO] number of examples: 900
+[2024-05-07 23:07:24,471 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:24,485 INFO] number of examples: 900
+[2024-05-07 23:07:25,147 INFO] Step 700/100000; acc:  98.34; ppl:  1.06; xent: 0.05; lr: 1.00000; 11640/9071 tok/s;     52 sec
+[2024-05-07 23:07:25,636 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:25,659 INFO] number of examples: 900
+[2024-05-07 23:07:26,861 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:26,876 INFO] number of examples: 900
+[2024-05-07 23:07:27,699 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:27,713 INFO] number of examples: 900
+[2024-05-07 23:07:28,592 INFO] Step 750/100000; acc:  98.63; ppl:  1.05; xent: 0.05; lr: 1.00000; 13015/10122 tok/s;     56 sec
+[2024-05-07 23:07:28,592 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:28,602 INFO] number of examples: 900
+[2024-05-07 23:07:29,450 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:29,463 INFO] number of examples: 900
+[2024-05-07 23:07:30,311 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:30,324 INFO] number of examples: 900
+[2024-05-07 23:07:31,762 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:31,889 INFO] number of examples: 900
+[2024-05-07 23:07:32,300 INFO] Step 800/100000; acc:  98.71; ppl:  1.04; xent: 0.04; lr: 1.00000; 11953/9343 tok/s;     60 sec
+[2024-05-07 23:07:32,302 INFO] Loading dataset from run/data.valid.0.pt
+[2024-05-07 23:07:32,312 INFO] number of examples: 100
+[2024-05-07 23:07:32,410 INFO] Validation perplexity: 1.35855
+[2024-05-07 23:07:32,410 INFO] Validation accuracy: 94.0767
+[2024-05-07 23:07:32,410 INFO] Stalled patience: 1/2
+[2024-05-07 23:07:32,412 INFO] Saving checkpoint run/model_step_800.pt
+[2024-05-07 23:07:33,168 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:33,184 INFO] number of examples: 900
+[2024-05-07 23:07:34,107 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:34,118 INFO] number of examples: 900
+[2024-05-07 23:07:35,042 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:35,060 INFO] number of examples: 900
+[2024-05-07 23:07:35,827 INFO] Step 850/100000; acc:  98.73; ppl:  1.04; xent: 0.04; lr: 1.00000; 12844/10009 tok/s;     63 sec
+[2024-05-07 23:07:36,131 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:36,145 INFO] number of examples: 900
+[2024-05-07 23:07:37,039 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:37,056 INFO] number of examples: 900
+[2024-05-07 23:07:37,918 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:37,931 INFO] number of examples: 900
+[2024-05-07 23:07:38,800 INFO] Step 900/100000; acc:  96.93; ppl:  1.13; xent: 0.12; lr: 1.00000; 15080/11728 tok/s;     66 sec
+[2024-05-07 23:07:38,800 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:38,814 INFO] number of examples: 900
+[2024-05-07 23:07:39,715 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:39,728 INFO] number of examples: 900
+[2024-05-07 23:07:40,652 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:40,665 INFO] number of examples: 900
+[2024-05-07 23:07:41,565 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:41,580 INFO] number of examples: 900
+[2024-05-07 23:07:41,854 INFO] Step 950/100000; acc:  97.98; ppl:  1.08; xent: 0.08; lr: 1.00000; 14514/11344 tok/s;     69 sec
+[2024-05-07 23:07:42,580 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:42,594 INFO] number of examples: 900
+[2024-05-07 23:07:43,517 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:43,531 INFO] number of examples: 900
+[2024-05-07 23:07:44,358 INFO] Loading dataset from run/data.train.0.pt
+[2024-05-07 23:07:44,376 INFO] number of examples: 900
+[2024-05-07 23:07:44,983 INFO] Step 1000/100000; acc:  98.86; ppl:  1.04; xent: 0.04; lr: 1.00000; 14479/11284 tok/s;     72 sec
+[2024-05-07 23:07:44,983 INFO] Loading dataset from run/data.valid.0.pt
+[2024-05-07 23:07:44,991 INFO] number of examples: 100
+[2024-05-07 23:07:45,047 INFO] Validation perplexity: 1.36424
+[2024-05-07 23:07:45,047 INFO] Validation accuracy: 94.7735
+[2024-05-07 23:07:45,047 INFO] Stalled patience: 0/2
+[2024-05-07 23:07:45,048 INFO] Training finished after stalled validations. Early Stop!
+[2024-05-07 23:07:45,048 INFO] Best model found at step 600
+[2024-05-07 23:07:45,049 INFO] Saving checkpoint run/model_step_1000.pt
